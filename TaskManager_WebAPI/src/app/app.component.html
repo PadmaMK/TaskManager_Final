@@ -1,0 +1,48 @@
+<div class="container">
+
+  <h1>
+    Welcome to TaskManager
+  </h1>
+  <!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple
+ lighten-1" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#">
+      <mdb-icon far icon="address-book"></mdb-icon>
+      Task Manager  
+      </a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" routerLinkActive="active">
+          <a routerLink="/AddTask"    class="nav-link waves-light" mdbWavesEffect>Add Task<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+                <a routerLink="/ViewTask"    class="nav-link waves-light" mdbWavesEffect>View Task</a>
+        </li>
+      
+      
+  
+      </ul>
+      <!-- Links -->
+  
+    
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->
+</div>
+
+    <div class="row">
+      <div class="col-md-10">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+
+
+

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TaskManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TASK">
+          <Key>
+            <PropertyRef Name="Task_id" />
+          </Key>
+          <Property Name="Task_id" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="TaskName" Type="varchar" MaxLength="50" />
+          <Property Name="Startdate" Type="datetime" Nullable="false" />
+          <Property Name="Enddate" Type="datetime" Nullable="false" />
+          <Property Name="task_priority" Type="int" />
+        </EntityType>
+        <Association Name="fk_task_id">
+          <End Role="TASK" Type="Self.TASK" Multiplicity="1" />
+          <End Role="TASK1" Type="Self.TASK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASK">
+              <PropertyRef Name="Task_id" />
+            </Principal>
+            <Dependent Role="TASK1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TaskManagerModelStoreContainer">
+          <EntitySet Name="TASK" EntityType="Self.TASK" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_task_id" Association="Self.fk_task_id">
+            <End Role="TASK" EntitySet="TASK" />
+            <End Role="TASK1" EntitySet="TASK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TaskManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TASK">
+          <Key>
+            <PropertyRef Name="Task_id" />
+          </Key>
+          <Property Name="Task_id" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Startdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Enddate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="task_priority" Type="Int32" />
+          <NavigationProperty Name="TASK1" Relationship="Self.fk_task_id" FromRole="TASK" ToRole="TASK1" />
+          <NavigationProperty Name="TASK2" Relationship="Self.fk_task_id" FromRole="TASK1" ToRole="TASK" />
+        </EntityType>
+        <Association Name="fk_task_id">
+          <End Role="TASK" Type="Self.TASK" Multiplicity="1" />
+          <End Role="TASK1" Type="Self.TASK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TASK">
+              <PropertyRef Name="Task_id" />
+            </Principal>
+            <Dependent Role="TASK1">
+              <PropertyRef Name="parent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TaskManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TASKs" EntityType="Self.TASK" />
+          <AssociationSet Name="fk_task_id" Association="Self.fk_task_id">
+            <End Role="TASK" EntitySet="TASKs" />
+            <End Role="TASK1" EntitySet="TASKs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TaskManagerModelStoreContainer" CdmEntityContainer="TaskManagerEntities">
+          <EntitySetMapping Name="TASKs">
+            <EntityTypeMapping TypeName="TaskManagerModel.TASK">
+              <MappingFragment StoreEntitySet="TASK">
+                <ScalarProperty Name="Task_id" ColumnName="Task_id" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
+                <ScalarProperty Name="task_priority" ColumnName="task_priority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

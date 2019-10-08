@@ -1,0 +1,14 @@
+npm install --save @ng-select/ng-select
+
+npm i angular-bootstrap-md --save
+npm install -–save chart.js@2.5.0 @types/chart.js @types/chart.js
+
+npm install -–save chart.js@2.5.0 @types/chart.js @types/chart.js @fortawesome/fontawesome-free hammerjs animate.css
+npm install --save ng5-slider
+
+ASP.Net
+CORS
+-----
+1 Microsoft.aspnet.mvc
+2 microsoft.Aspnet.web.optimizations
+3 microsoft.Aspnet.web.cors
