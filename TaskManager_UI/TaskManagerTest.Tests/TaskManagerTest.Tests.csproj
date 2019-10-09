@@ -110,10 +110,6 @@
       <Project>{ef253b3a-add7-42c2-9b01-fcc7de71381b}</Project>
       <Name>TaskManager.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TaskManagerTest\TaskManagerTest.csproj">
-      <Project>{9AD42BCC-D53A-41DD-8823-730934B88E72}</Project>
-      <Name>TaskManagerTest</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
